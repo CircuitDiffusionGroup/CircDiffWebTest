@@ -1,1 +1,598 @@
-<a href="https://github.com/CircuitDiffusionGroup/TracerDocs">docs</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TracerDocs - HDL Compiler for PCB Design</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #6b21a8 0%, #2563eb 100%);
+        }
+        .code-block {
+            font-family: 'Courier New', monospace;
+            background-color: #1e293b;
+            color: #f8fafc;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            overflow-x: auto;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #3b82f6;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i class="fas fa-project-diagram text-indigo-600 text-2xl mr-2"></i>
+                        <span class="text-xl font-bold text-gray-900">TracerDocs</span>
+                    </div>
+                </div>
+                <div class="hidden md:ml-6 md:flex md:items-center md:space-x-8">
+                    <a href="#features" class="nav-link text-gray-700 hover:text-gray-900 px-3 py-2 text-sm font-medium">Features</a>
+                    <a href="#documentation" class="nav-link text-gray-700 hover:text-gray-900 px-3 py-2 text-sm font-medium">Documentation</a>
+                    <a href="#getting-started" class="nav-link text-gray-700 hover:text-gray-900 px-3 py-2 text-sm font-medium">Getting Started</a>
+                    <a href="https://github.com/CircuitDiffusionGroup/TracerDocs" target="_blank" class="bg-indigo-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-indigo-700 transition-colors">
+                        <i class="fab fa-github mr-1"></i> GitHub
+                    </a>
+                </div>
+                <div class="-mr-2 flex items-center md:hidden">
+                    <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none">
+                        <span class="sr-only">Open main menu</span>
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#features" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md">Features</a>
+                <a href="#documentation" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md">Documentation</a>
+                <a href="#getting-started" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md">Getting Started</a>
+                <a href="https://github.com/CircuitDiffusionGroup/TracerDocs" target="_blank" class="block px-3 py-2 text-base font-medium text-indigo-600 hover:text-indigo-800 hover:bg-gray-50 rounded-md">
+                    <i class="fab fa-github mr-1"></i> GitHub
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="gradient-bg text-white">
+        <div class="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
+                    Tracer HDL Compiler
+                </h1>
+                <p class="mt-6 max-w-2xl mx-auto text-xl text-indigo-100">
+                    A powerful hardware description language compiler designed specifically for PCB design workflows.
+                </p>
+                <div class="mt-10 flex justify-center space-x-4">
+                    <a href="#getting-started" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-indigo-700 bg-white hover:bg-gray-50">
+                        Get Started
+                    </a>
+                    <a href="https://github.com/CircuitDiffusionGroup/TracerDocs" target="_blank" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-800 bg-opacity-60 hover:bg-opacity-70">
+                        <i class="fab fa-github mr-2"></i> View on GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Features Section -->
+    <section id="features" class="py-12 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:text-center">
+                <h2 class="text-base text-indigo-600 font-semibold tracking-wide uppercase">Features</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                    Why choose Tracer HDL?
+                </p>
+                <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
+                    Designed with PCB engineers in mind, Tracer brings modern language features to hardware design.
+                </p>
+            </div>
+
+            <div class="mt-10">
+                <div class="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
+                    <!-- Feature 1 -->
+                    <div class="feature-card bg-white rounded-lg shadow-md p-6 transition-all duration-300">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-100 text-indigo-600">
+                            <i class="fas fa-microchip text-xl"></i>
+                        </div>
+                        <div class="mt-5">
+                            <h3 class="text-lg font-medium text-gray-900">PCB-Centric Design</h3>
+                            <p class="mt-2 text-base text-gray-500">
+                                Tracer is built specifically for PCB design workflows, with native support for common PCB components and constraints.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Feature 2 -->
+                    <div class="feature-card bg-white rounded-lg shadow-md p-6 transition-all duration-300">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-100 text-indigo-600">
+                            <i class="fas fa-code text-xl"></i>
+                        </div>
+                        <div class="mt-5">
+                            <h3 class="text-lg font-medium text-gray-900">Modern HDL Syntax</h3>
+                            <p class="mt-2 text-base text-gray-500">
+                                Enjoy clean, expressive syntax with features like type inference, generics, and functional programming constructs.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Feature 3 -->
+                    <div class="feature-card bg-white rounded-lg shadow-md p-6 transition-all duration-300">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-100 text-indigo-600">
+                            <i class="fas fa-bolt text-xl"></i>
+                        </div>
+                        <div class="mt-5">
+                            <h3 class="text-lg font-medium text-gray-900">Fast Compilation</h3>
+                            <p class="mt-2 text-base text-gray-500">
+                                Optimized compiler pipeline delivers fast iteration cycles, even for complex designs.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Feature 4 -->
+                    <div class="feature-card bg-white rounded-lg shadow-md p-6 transition-all duration-300">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-100 text-indigo-600">
+                            <i class="fas fa-share-alt text-xl"></i>
+                        </div>
+                        <div class="mt-5">
+                            <h3 class="text-lg font-medium text-gray-900">Multi-Format Output</h3>
+                            <p class="mt-2 text-base text-gray-500">
+                                Generate netlists, BOMs, and documentation in multiple formats from a single source.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Feature 5 -->
+                    <div class="feature-card bg-white rounded-lg shadow-md p-6 transition-all duration-300">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-100 text-indigo-600">
+                            <i class="fas fa-check-circle text-xl"></i>
+                        </div>
+                        <div class="mt-5">
+                            <h3 class="text-lg font-medium text-gray-900">Static Verification</h3>
+                            <p class="mt-2 text-base text-gray-500">
+                                Catch design errors early with built-in static analysis and verification tools.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Feature 6 -->
+                    <div class="feature-card bg-white rounded-lg shadow-md p-6 transition-all duration-300">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-100 text-indigo-600">
+                            <i class="fas fa-users text-xl"></i>
+                        </div>
+                        <div class="mt-5">
+                            <h3 class="text-lg font-medium text-gray-900">Open Source</h3>
+                            <p class="mt-2 text-base text-gray-500">
+                                Fully open-source with an active community contributing to its development.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Documentation Section -->
+    <section id="documentation" class="py-12 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:text-center">
+                <h2 class="text-base text-indigo-600 font-semibold tracking-wide uppercase">Documentation</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                    Comprehensive Resources
+                </p>
+                <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
+                    Explore the official documentation to master Tracer HDL.
+                </p>
+            </div>
+
+            <div class="mt-10">
+                <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                    <!-- Doc Card 1 -->
+                    <a href="https://github.com/CircuitDiffusionGroup/TracerDocs" target="_blank" class="group bg-white overflow-hidden shadow rounded-lg hover:shadow-lg transition-shadow duration-300">
+                        <div class="px-4 py-5 sm:p-6">
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0 bg-indigo-100 rounded-md p-3">
+                                    <i class="fas fa-book text-indigo-600 text-xl"></i>
+                                </div>
+                                <div class="ml-5 w-0 flex-1">
+                                    <h3 class="text-lg font-medium text-gray-900 group-hover:text-indigo-600 transition-colors">
+                                        Language Reference
+                                    </h3>
+                                    <p class="mt-1 text-sm text-gray-500">
+                                        Complete syntax and semantics of the Tracer HDL language.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Doc Card 2 -->
+                    <a href="https://github.com/CircuitDiffusionGroup/TracerDocs" target="_blank" class="group bg-white overflow-hidden shadow rounded-lg hover:shadow-lg transition-shadow duration-300">
+                        <div class="px-4 py-5 sm:p-6">
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0 bg-indigo-100 rounded-md p-3">
+                                    <i class="fas fa-terminal text-indigo-600 text-xl"></i>
+                                </div>
+                                <div class="ml-5 w-0 flex-1">
+                                    <h3 class="text-lg font-medium text-gray-900 group-hover:text-indigo-600 transition-colors">
+                                        CLI Usage
+                                    </h3>
+                                    <p class="mt-1 text-sm text-gray-500">
+                                        Command-line interface reference and usage examples.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Doc Card 3 -->
+                    <a href="https://github.com/CircuitDiffusionGroup/TracerDocs" target="_blank" class="group bg-white overflow-hidden shadow rounded-lg hover:shadow-lg transition-shadow duration-300">
+                        <div class="px-4 py-5 sm:p-6">
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0 bg-indigo-100 rounded-md p-3">
+                                    <i class="fas fa-cubes text-indigo-600 text-xl"></i>
+                                </div>
+                                <div class="ml-5 w-0 flex-1">
+                                    <h3 class="text-lg font-medium text-gray-900 group-hover:text-indigo-600 transition-colors">
+                                        Standard Library
+                                    </h3>
+                                    <p class="mt-1 text-sm text-gray-500">
+                                        Documentation for built-in components and utilities.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Doc Card 4 -->
+                    <a href="https://github.com/CircuitDiffusionGroup/TracerDocs" target="_blank" class="group bg-white overflow-hidden shadow rounded-lg hover:shadow-lg transition-shadow duration-300">
+                        <div class="px-4 py-5 sm:p-6">
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0 bg-indigo-100 rounded-md p-3">
+                                    <i class="fas fa-lightbulb text-indigo-600 text-xl"></i>
+                                </div>
+                                <div class="ml-5 w-0 flex-1">
+                                    <h3 class="text-lg font-medium text-gray-900 group-hover:text-indigo-600 transition-colors">
+                                        Tutorials
+                                    </h3>
+                                    <p class="mt-1 text-sm text-gray-500">
+                                        Step-by-step guides for common design patterns.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Doc Card 5 -->
+                    <a href="https://github.com/CircuitDiffusionGroup/TracerDocs" target="_blank" class="group bg-white overflow-hidden shadow rounded-lg hover:shadow-lg transition-shadow duration-300">
+                        <div class="px-4 py-5 sm:p-6">
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0 bg-indigo-100 rounded-md p-3">
+                                    <i class="fas fa-tools text-indigo-600 text-xl"></i>
+                                </div>
+                                <div class="ml-5 w-0 flex-1">
+                                    <h3 class="text-lg font-medium text-gray-900 group-hover:text-indigo-600 transition-colors">
+                                        Integration Guides
+                                    </h3>
+                                    <p class="mt-1 text-sm text-gray-500">
+                                        How to integrate Tracer with popular EDA tools.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Doc Card 6 -->
+                    <a href="https://github.com/CircuitDiffusionGroup/TracerDocs" target="_blank" class="group bg-white overflow-hidden shadow rounded-lg hover:shadow-lg transition-shadow duration-300">
+                        <div class="px-4 py-5 sm:p-6">
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0 bg-indigo-100 rounded-md p-3">
+                                    <i class="fas fa-question-circle text-indigo-600 text-xl"></i>
+                                </div>
+                                <div class="ml-5 w-0 flex-1">
+                                    <h3 class="text-lg font-medium text-gray-900 group-hover:text-indigo-600 transition-colors">
+                                        FAQ & Troubleshooting
+                                    </h3>
+                                    <p class="mt-1 text-sm text-gray-500">
+                                        Solutions to common problems and questions.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Getting Started Section -->
+    <section id="getting-started" class="py-12 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:text-center">
+                <h2 class="text-base text-indigo-600 font-semibold tracking-wide uppercase">Getting Started</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                    Begin your Tracer journey
+                </p>
+                <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
+                    Follow these steps to set up Tracer HDL and create your first design.
+                </p>
+            </div>
+
+            <div class="mt-10">
+                <div class="relative">
+                    <!-- Vertical line -->
+                    <div class="absolute left-5 top-0 h-full w-0.5 bg-gray-200" aria-hidden="true"></div>
+
+                    <ul class="space-y-8">
+                        <!-- Step 1 -->
+                        <li>
+                            <div class="relative flex items-start group">
+                                <div>
+                                    <span class="flex items-center justify-center h-10 w-10 rounded-full bg-indigo-100 group-hover:bg-indigo-200 transition-colors">
+                                        <span class="text-indigo-600 font-bold">1</span>
+                                    </span>
+                                </div>
+                                <div class="ml-6">
+                                    <h3 class="text-lg font-medium text-gray-900">Install Tracer</h3>
+                                    <p class="mt-2 text-base text-gray-500">
+                                        Download and install the Tracer compiler for your platform.
+                                    </p>
+                                    <div class="mt-4 code-block">
+                                        <code># Install via package manager (example)</code><br>
+                                        <code>$ curl -fsSL https://tracer.install | sh</code>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <!-- Step 2 -->
+                        <li>
+                            <div class="relative flex items-start group">
+                                <div>
+                                    <span class="flex items-center justify-center h-10 w-10 rounded-full bg-indigo-100 group-hover:bg-indigo-200 transition-colors">
+                                        <span class="text-indigo-600 font-bold">2</span>
+                                    </span>
+                                </div>
+                                <div class="ml-6">
+                                    <h3 class="text-lg font-medium text-gray-900">Create a Project</h3>
+                                    <p class="mt-2 text-base text-gray-500">
+                                        Initialize a new Tracer project with the CLI tool.
+                                    </p>
+                                    <div class="mt-4 code-block">
+                                        <code>$ tracer init my_project</code><br>
+                                        <code>$ cd my_project</code>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <!-- Step 3 -->
+                        <li>
+                            <div class="relative flex items-start group">
+                                <div>
+                                    <span class="flex items-center justify-center h-10 w-10 rounded-full bg-indigo-100 group-hover:bg-indigo-200 transition-colors">
+                                        <span class="text-indigo-600 font-bold">3</span>
+                                    </span>
+                                </div>
+                                <div class="ml-6">
+                                    <h3 class="text-lg font-medium text-gray-900">Write Your Design</h3>
+                                    <p class="mt-2 text-base text-gray-500">
+                                        Create your hardware design using Tracer HDL syntax.
+                                    </p>
+                                    <div class="mt-4 code-block">
+                                        <code>// Example: Simple AND gate</code><br>
+                                        <code>module and_gate(input a, b, output y) {</code><br>
+                                        <code>  y = a & b;</code><br>
+                                        <code>}</code>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <!-- Step 4 -->
+                        <li>
+                            <div class="relative flex items-start group">
+                                <div>
+                                    <span class="flex items-center justify-center h-10 w-10 rounded-full bg-indigo-100 group-hover:bg-indigo-200 transition-colors">
+                                        <span class="text-indigo-600 font-bold">4</span>
+                                    </span>
+                                </div>
+                                <div class="ml-6">
+                                    <h3 class="text-lg font-medium text-gray-900">Compile & Export</h3>
+                                    <p class="mt-2 text-base text-gray-500">
+                                        Compile your design and export to various formats.
+                                    </p>
+                                    <div class="mt-4 code-block">
+                                        <code>$ tracer compile design.tr -o netlist.v</code><br>
+                                        <code>$ tracer bom design.tr -o bom.csv</code>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Section -->
+    <section class="py-12 bg-indigo-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:text-center">
+                <h2 class="text-base text-indigo-600 font-semibold tracking-wide uppercase">Community</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                    Join the Tracer Community
+                </p>
+                <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
+                    Connect with other developers, contribute, and get support.
+                </p>
+            </div>
+
+            <div class="mt-10 flex flex-col items-center">
+                <div class="grid grid-cols-1 gap-8 sm:grid-cols-3">
+                    <a href="https://github.com/CircuitDiffusionGroup/TracerDocs" target="_blank" class="flex flex-col items-center bg-white p-6 rounded-lg shadow hover:shadow-lg transition-shadow">
+                        <i class="fab fa-github text-4xl text-gray-800 mb-4"></i>
+                        <h3 class="text-lg font-medium text-gray-900">GitHub</h3>
+                        <p class="mt-2 text-sm text-gray-500 text-center">
+                            Star the repo, report issues, or submit pull requests.
+                        </p>
+                    </a>
+
+                    <a href="#" class="flex flex-col items-center bg-white p-6 rounded-lg shadow hover:shadow-lg transition-shadow">
+                        <i class="fab fa-discord text-4xl text-indigo-600 mb-4"></i>
+                        <h3 class="text-lg font-medium text-gray-900">Discord</h3>
+                        <p class="mt-2 text-sm text-gray-500 text-center">
+                            Chat with the community and get real-time help.
+                        </p>
+                    </a>
+
+                    <a href="#" class="flex flex-col items-center bg-white p-6 rounded-lg shadow hover:shadow-lg transition-shadow">
+                        <i class="fas fa-book-open text-4xl text-indigo-600 mb-4"></i>
+                        <h3 class="text-lg font-medium text-gray-900">Forum</h3>
+                        <p class="mt-2 text-sm text-gray-500 text-center">
+                            Discuss ideas and share knowledge with others.
+                        </p>
+                    </a>
+                </div>
+
+                <div class="mt-12 w-full max-w-2xl">
+                    <div class="bg-white p-6 rounded-lg shadow">
+                        <h3 class="text-lg font-medium text-gray-900 mb-4">Stay Updated</h3>
+                        <p class="text-gray-600 mb-4">
+                            Subscribe to our newsletter for the latest updates and announcements.
+                        </p>
+                        <form class="mt-4 sm:flex">
+                            <label for="email-address" class="sr-only">Email address</label>
+                            <input id="email-address" name="email" type="email" autocomplete="email" required class="w-full px-5 py-3 border border-gray-300 shadow-sm placeholder-gray-400 focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs rounded-md" placeholder="Enter your email">
+                            <div class="mt-3 rounded-md shadow sm:mt-0 sm:ml-3 sm:flex-shrink-0">
+                                <button type="submit" class="w-full flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                    Subscribe
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">Tracer HDL</h3>
+                    <ul class="mt-4 space-y-4">
+                        <li><a href="#features" class="text-base text-gray-300 hover:text-white">Features</a></li>
+                        <li><a href="#documentation" class="text-base text-gray-300 hover:text-white">Documentation</a></li>
+                        <li><a href="#getting-started" class="text-base text-gray-300 hover:text-white">Getting Started</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">Resources</h3>
+                    <ul class="mt-4 space-y-4">
+                        <li><a href="https://github.com/CircuitDiffusionGroup/TracerDocs" target="_blank" class="text-base text-gray-300 hover:text-white">GitHub</a></li>
+                        <li><a href="#" class="text-base text-gray-300 hover:text-white">Blog</a></li>
+                        <li><a href="#" class="text-base text-gray-300 hover:text-white">Tutorials</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">Community</h3>
+                    <ul class="mt-4 space-y-4">
+                        <li><a href="#" class="text-base text-gray-300 hover:text-white">Discord</a></li>
+                        <li><a href="#" class="text-base text-gray-300 hover:text-white">Forum</a></li>
+                        <li><a href="#" class="text-base text-gray-300 hover:text-white">Events</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">Legal</h3>
+                    <ul class="mt-4 space-y-4">
+                        <li><a href="#" class="text-base text-gray-300 hover:text-white">Privacy</a></li>
+                        <li><a href="#" class="text-base text-gray-300 hover:text-white">Terms</a></li>
+                        <li><a href="#" class="text-base text-gray-300 hover:text-white">License</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mt-12 border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-base text-gray-400">
+                    &copy; 2023 Circuit Diffusion Group. All rights reserved.
+                </p>
+                <div class="mt-4 md:mt-0 flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white">
+                        <i class="fab fa-twitter text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white">
+                        <i class="fab fa-youtube text-xl"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
